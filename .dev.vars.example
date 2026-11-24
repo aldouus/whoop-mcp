@@ -1,0 +1,5 @@
+WHOOP_CLIENT_ID=your_whoop_client_id
+WHOOP_CLIENT_SECRET=your_whoop_client_secret
+COOKIE_ENCRYPTION_KEY=replace_with_openssl_rand_hex_32
+MCP_RESOURCE=https://your-host.example/mcp
+ALLOWED_WHOOP_USER_ID=

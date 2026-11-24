@@ -1,0 +1,52 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "whoop-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-17",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {
+    "WHOOP_AUTH_URL": "https://api.prod.whoop.com/oauth/oauth2/auth",
+    "WHOOP_TOKEN_URL": "https://api.prod.whoop.com/oauth/oauth2/token",
+    "WHOOP_API_BASE": "https://api.prod.whoop.com/developer",
+  },
+  "kv_namespaces": [
+    {
+      "binding": "OAUTH_KV",
+      "id": "be81710cd7d84224928b010cf859fe0e",
+      "remote": true,
+    },
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "WHOOP_GRANT",
+        "class_name": "WhoopGrant",
+      },
+    ],
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["WhoopGrant"],
+    },
+  ],
+  "observability": {
+    "enabled": true,
+    "traces": {
+      "enabled": true,
+    },
+  },
+  "workers_dev": true,
+  "dev": {
+    "port": 8788,
+  },
+  "secrets": {
+    "required": [
+      "WHOOP_CLIENT_ID",
+      "WHOOP_CLIENT_SECRET",
+      "COOKIE_ENCRYPTION_KEY",
+      "MCP_RESOURCE",
+      "ALLOWED_WHOOP_USER_ID",
+    ],
+  },
+}
